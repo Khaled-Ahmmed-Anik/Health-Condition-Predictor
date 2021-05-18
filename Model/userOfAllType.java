@@ -5,17 +5,23 @@ import java.util.List;
 
 public class userOfAllType {
 
-    String name,password,email, role;
+
+    public String name;
+    public String password;
+    public String role;
+    public String email;
+    public String preRec;
     List<diseaseInfo> previousInfo=new ArrayList<diseaseInfo>();
 
     public userOfAllType() {
     }
 
-    public userOfAllType(String name, String password, String email, String role) {
+    public userOfAllType(String name, String password, String email, String role,String preRec) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.preRec=preRec;
     }
 
     public List<diseaseInfo> getPreviousInfo() {
