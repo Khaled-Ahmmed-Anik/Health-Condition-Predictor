@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,8 +58,8 @@ public class userFirstInterface extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String newText) {
                 int j=0;
-                String nam;
-                for(diseaseInfo x : databaseHelper.allDiseaseInfo){
+                String nam=matchedDiscease(newText);
+            /*    for(diseaseInfo x : databaseHelper.allDiseaseInfo){
 
                     String name=x.symptoms;nam=x.diseaseName;
                     int newTextLength=newText.length();
@@ -79,32 +78,32 @@ public class userFirstInterface extends AppCompatActivity {
                         }
                     }
                     if(cnt==minLenght){
-
+*/
                         if(nam.equals("Goitre")){
                             imageView.setVisibility(View.VISIBLE);
                             imageView.setBackgroundResource(R.drawable.goitre);
+                            return false;
                         }else if(nam.equals("Rickets")){
                             imageView.setVisibility(View.VISIBLE);
                             imageView.setBackgroundResource(R.drawable.rickes);
+                            return false;
                         }
 
-                        return false;
-                    }
+
+             /*       }
                     j++;
-                }
+                }*/
 
 
 
                 return false;
             }
 
+
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 imageView.setVisibility(View.INVISIBLE);
-
-                // Toast.makeText(DetailsActivity.this, Integer.toString(mainWork.productListList.size()), Toast.LENGTH_SHORT).show();
-
-                //customAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -117,7 +116,7 @@ public class userFirstInterface extends AppCompatActivity {
     }
 
     public void tipDis(View V){
-        Intent intent=new Intent(userFirstInterface.this,diseaseList.class);
+        Intent intent=new Intent(userFirstInterface.this, diseaseList.class);
         startActivity(intent);
     }
 
@@ -135,7 +134,47 @@ public class userFirstInterface extends AppCompatActivity {
     }
 
     public void book(View V){
-        Intent intent=new Intent(userFirstInterface.this,booking.class);
+        Intent intent=new Intent(userFirstInterface.this, booking.class);
         startActivity(intent);
     }
+
+
+    public static String matchedDiscease(String newText){
+        String ret="Not Matched";
+        databaseHelper.init();
+        for(diseaseInfo x : databaseHelper.allDiseaseInfo) {
+
+            String name = x.symptoms,nam = x.diseaseName;
+
+            if(newText.equals(name)){
+                return nam;
+            }
+        }
+
+        return ret;
+    }
+
+    public static String getUserName(int id){
+        databaseHelper.init();
+        if(id>=databaseHelper.allUserInfo.size())return "Invalid";
+        userOfAllType temp=databaseHelper.getMyInfo(id);
+        return temp.name;
+    }
+
+    public static String getUserMail(int id){
+        databaseHelper.init();
+        if(id>=databaseHelper.allUserInfo.size())return "Invalid";
+        userOfAllType temp=databaseHelper.getMyInfo(id);
+        return temp.email;
+    }
+
+    public static String getPreviousRecords(int id){
+        databaseHelper.init();
+        if(id>=databaseHelper.allUserInfo.size())return "Invalid";
+        userOfAllType temp=databaseHelper.getMyInfo(id);
+        return temp.preRec;
+    }
+
+
+
 }
