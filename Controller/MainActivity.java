@@ -1,4 +1,5 @@
 package com.khlaedahmmedanik.healthconditionpredictor;
+package com.khlaedahmmedanik.healthconditionpredictor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
     //variables
     Animation topAnim,bottomAnim;
     TextView logo,slogan;
-    userOfAllType a= new userOfAllType("anik","a","khaledahmmedanik@gmail.com","user");
+   /* userOfAllType a= new userOfAllType("anik","a","khaledahmmedanik@gmail.com","user");
+    userOfAllType d= new userOfAllType("anik98","ioiq1234","khaledahmmedanik@gmail.com","user");
     userOfAllType b= new userOfAllType("ambulance370","370","370ambulance@gmail.com","ambulanceServiceProvider");
     userOfAllType c= new userOfAllType("doctor370","370","370doctor@gmail.com","doctorServiceProvider");
 
     diseaseInfo aa=new diseaseInfo("Goitre","painful joints");
     diseaseInfo bb=new diseaseInfo("Scurvy","swollen gums,delayed wound healing");
-    diseaseInfo cc=new diseaseInfo("Rickets","sleeplessness, pale face, diarrhoea,deformed skull");
+    diseaseInfo cc=new diseaseInfo("Rickets","sleeplessness, pale face, diarrhoea, deformed skull");*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +53,16 @@ public class MainActivity extends AppCompatActivity {
         slogan.setAnimation(bottomAnim);
 
         //set pre  database data
-        databaseHelper.allUserInfo.add(a);
+        databaseHelper.init();
+        /*databaseHelper.allUserInfo.add(a);
         databaseHelper.allUserInfo.add(b);
         databaseHelper.allUserInfo.add(c);
+        databaseHelper.allUserInfo.add(d);
 
 
         databaseHelper.allDiseaseInfo.add(aa);
         databaseHelper.allDiseaseInfo.add(bb);
-        databaseHelper.allDiseaseInfo.add(cc);
+        databaseHelper.allDiseaseInfo.add(cc);*/
 
         //all pre addition done
 
