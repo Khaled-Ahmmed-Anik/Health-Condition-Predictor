@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class diseaseInfo {
-    String diseaseName;
-    String symptoms;
+    public String diseaseName;
+    public String symptoms;
 
     public diseaseInfo(String diseaseName, String symptoms) {
         this.diseaseName = diseaseName;
